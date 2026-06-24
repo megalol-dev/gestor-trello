@@ -1,0 +1,4 @@
+// arranca xaamp para la base datos
+
+// en la consola escribe -> 
+php artisan serve
