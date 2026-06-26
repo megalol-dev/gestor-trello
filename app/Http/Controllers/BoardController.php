@@ -46,7 +46,12 @@ class BoardController extends Controller
             'descripcion' => $request->descripcion,
         ]);
 
-        return redirect()->route('dashboard');
+        return redirect()
+            ->back()
+            ->with(
+                'scroll_position',
+                $request->scroll_position
+            );
     }
 
     public function edit(Request $request, Board $board)

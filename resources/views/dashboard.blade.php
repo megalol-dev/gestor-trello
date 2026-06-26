@@ -5,52 +5,59 @@
                 <div class="p-6 text-gray-900">
                     <div class="dashboard-container">
 
-                        <h2 class="dashboard-title">
-                            Bienvenido a GestorTrello
-                        </h2>
-
-                        <div class="dashboard-user-bar">
-
-                            <div class="dashboard-user-info">
-                                <span>Usuario: {{ Auth::user()->name }}</span>
-                            </div>
-
-                            <div class="dashboard-user-actions">
-
-                                <a
-                                    href="{{ route('profile.edit') }}"
-                                    class="btn btn-primary">
-                                    Perfil
-                                </a>
-
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-
-                                    <button
-                                        type="submit"
-                                        class="btn btn-danger">
-                                        Cerrar sesión
-                                    </button>
-                                </form>
-
-                            </div>
-
+                        <div class="rotate-device-message">
+                            <h2>📱↻</h2>
+                            <p>Gira tu dispositivo para utilizar la aplicación.</p>
                         </div>
 
-                        <div class="dashboard-actions">
+                        <div class="dashboard-page-content">
 
-                            <button
-                                type="button"
-                                class="btn btn-primary"
-                                onclick="openCreateBoardModal()">
-                                Crear tablero
-                            </button>
+                            <h1 class="dashboard-title">
+                                Panel de control
+                            </h1>
 
-                        </div>
+                            <div class="dashboard-user-bar">
 
-                        <h2 class="dashboard-section-title">
-                            Resumen general de tu actividad
-                        </h2>
+                                <div class="dashboard-user-info">
+                                    <span>Usuario: {{ Auth::user()->name }}</span>
+                                </div>
+
+                                <div class="dashboard-user-actions">
+
+                                    <a
+                                        href="{{ route('profile.edit') }}"
+                                        class="btn btn-primary">
+                                        Perfil
+                                    </a>
+
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+
+                                        <button
+                                            type="submit"
+                                            class="btn btn-danger">
+                                            Cerrar sesión
+                                        </button>
+                                    </form>
+
+                                </div>
+
+                            </div> <!-- FIN dashboard-user-bar -->
+
+                            <div class="dashboard-actions">
+
+                                <button
+                                    type="button"
+                                    class="btn btn-primary"
+                                    onclick="openCreateBoardModal()">
+                                    Crear tablero
+                                </button>
+
+                            </div>
+
+                            <h2 class="dashboard-section-title">
+                                Resumen general de tu actividad
+                            </h2>
 
 
                             <div class="dashboard-summary">
@@ -91,162 +98,194 @@
 
                             </div>
 
-                            <div class="dashboard-actions">
 
-                                <div class="dashboard-boards">
 
-                                    <h2 class="dashboard-section-title">
-                                        Tus tableros
-                                    </h2>
+                            <div class="dashboard-boards">
 
-                                    @if($boards->isEmpty())
+                                <h2 class="dashboard-section-title">
+                                    Tus tableros
+                                </h2>
 
-                                    <p class="empty-message">
-                                        Todavía no tienes tableros creados.
-                                    </p>
+                                @if($boards->isEmpty())
 
-                                    @else
+                                <p class="empty-message">
+                                    Todavía no tienes tableros creados.
+                                </p>
 
-                                    <div class="dashboard-boards-grid">
+                                @else
 
-                                        @foreach($boards as $board)
+                                <div class="dashboard-boards-grid">
 
-                                        @php
-                                        $pendientesBoard = $board->tareasPendientes()->count();
-                                        $progresoBoard = $board->tareasProgreso()->count();
-                                        $hechasBoard = $board->tareasHechas()->count();
+                                    @foreach($boards as $board)
 
-                                        $totalBoard =
-                                        $pendientesBoard +
-                                        $progresoBoard +
-                                        $hechasBoard;
+                                    @php
+                                    $pendientesBoard = $board->tareasPendientes()->count();
+                                    $progresoBoard = $board->tareasProgreso()->count();
+                                    $hechasBoard = $board->tareasHechas()->count();
 
-                                        $porcentajeBoard = $totalBoard > 0
-                                        ? round(($hechasBoard / $totalBoard) * 100)
-                                        : 0;
-                                        @endphp
+                                    $totalBoard =
+                                    $pendientesBoard +
+                                    $progresoBoard +
+                                    $hechasBoard;
 
-                                        <div class="dashboard-board-card">
+                                    $porcentajeBoard = $totalBoard > 0
+                                    ? round(($hechasBoard / $totalBoard) * 100)
+                                    : 0;
+                                    @endphp
 
-                                            <div class="dashboard-board-title">
+                                    <div class="dashboard-board-card">
 
-                                                <a
-                                                    href="{{ route('boards.show', $board) }}"
-                                                    class="board-open-button">
-                                                    📋 {{ $board->nombre }}
-                                                </a>
+                                        <div class="dashboard-board-title">
 
-                                            </div>
-
-                                            <p class="dashboard-board-description">
-                                                Información: {{ $board->descripcion }}
-                                            </p>
-
-                                            <div class="dashboard-board-stats">
-
-                                                <span>⏳ {{ $pendientesBoard }}</span>
-
-                                                <span>🔄 {{ $progresoBoard }}</span>
-
-                                                <span>✅ {{ $hechasBoard }}</span>
-
-                                            </div>
-
-                                            <div class="dashboard-board-progress">
-                                                📈 {{ $porcentajeBoard }}% completado
-                                            </div>
+                                            <a
+                                                href="{{ route('boards.show', $board) }}"
+                                                class="board-open-button">
+                                                📋 {{ $board->nombre }}
+                                            </a>
 
                                         </div>
 
-                                        @endforeach
+                                        <p class="dashboard-board-description">
+                                            Información: {{ $board->descripcion }}
+                                        </p>
 
-                                        @endif
+                                        <div class="dashboard-board-stats">
+
+                                            <span>⏳ {{ $pendientesBoard }}</span>
+                                            <span>🔄 {{ $progresoBoard }}</span>
+                                            <span>✅ {{ $hechasBoard }}</span>
+
+                                        </div>
+
+                                        <div class="dashboard-board-progress">
+                                            📈 {{ $porcentajeBoard }}% completado
+                                        </div>
 
                                     </div>
 
-
+                                    @endforeach
 
                                 </div>
 
+                                @endif
 
                             </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div id="createBoardModal" class="board-modal">
+    <div id="createBoardModal" class="board-modal">
 
-                <div class="board-modal-content">
+        <div class="board-modal-content">
 
-                    <h2>Crear tablero</h2>
+            <h2>Crear tablero</h2>
 
-                    <form method="POST" action="{{ route('boards.store') }}">
+            <form method="POST" action="{{ route('boards.store') }}">
 
-                        @csrf
+                @csrf
 
-                        <div class="form-group">
+                <div class="form-group">
 
-                            <label for="nombre">Nombre del tablero</label>
+                    <label for="nombre">Nombre del tablero</label>
 
-                            <input
-                                type="text"
-                                id="nombre"
-                                name="nombre"
-                                required
-                                placeholder="Ej: Proyecto DAW">
+                    <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        placeholder="Ej: Proyecto DAW">
 
-                        </div>
-
-                        <div class="form-group">
-
-                            <label for="descripcion">Descripción</label>
-
-                            <textarea
-                                id="descripcion"
-                                name="descripcion"
-                                rows="4"
-                                placeholder="Describe brevemente el tablero"></textarea>
-
-                        </div>
-
-                        <div class="board-modal-actions">
-
-                            <button
-                                type="button"
-                                class="btn btn-danger"
-                                onclick="closeCreateBoardModal()">
-                                Cancelar
-                            </button>
-
-                            <button
-                                type="submit"
-                                class="btn btn-primary">
-                                Crear tablero
-                            </button>
-
-                        </div>
-
-                    </form>
+                    <div
+                        id="board-error"
+                        class="login-error"
+                        style="display:none;">
+                        Debes introducir un nombre para crear el tablero.
+                    </div>
 
                 </div>
 
-            </div>
+                <div class="form-group">
 
-            <script>
-                function openCreateBoardModal() {
-                    document.getElementById('createBoardModal').style.display = 'flex';
+                    <label for="descripcion">Descripción</label>
+
+                    <textarea
+                        id="descripcion"
+                        name="descripcion"
+                        rows="4"
+                        placeholder="Describe brevemente el tablero"></textarea>
+
+                </div>
+
+                <div class="board-modal-actions">
+
+                    <button
+                        type="button"
+                        class="btn btn-danger"
+                        onclick="closeCreateBoardModal()">
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary">
+                        Crear tablero
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script>
+        document
+            .querySelector('#createBoardModal form')
+            .addEventListener('submit', function(event) {
+
+                const nombre =
+                    document.getElementById('nombre');
+
+                const error =
+                    document.getElementById('board-error');
+
+                if (nombre.value.trim() === '') {
+
+                    event.preventDefault();
+
+                    error.style.display = 'block';
+
+                    nombre.focus();
+
+                    return;
                 }
 
-                function closeCreateBoardModal() {
-                    document.getElementById('createBoardModal').style.display = 'none';
-                }
+                error.style.display = 'none';
+            });
 
-                window.addEventListener('click', function(event) {
-                    const modal = document.getElementById('createBoardModal');
+        document
+            .getElementById('nombre')
+            .addEventListener('input', function() {
 
-                    if (event.target === modal) {
-                        closeCreateBoardModal();
-                    }
-                });
-            </script>
+                document.getElementById(
+                    'board-error'
+                ).style.display = 'none';
+
+            });
+
+        function openCreateBoardModal() {
+            document.getElementById('createBoardModal').style.display = 'flex';
+            document.body.classList.add('modal-open');
+        }
+
+        function closeCreateBoardModal() {
+            document.getElementById('createBoardModal').style.display = 'none';
+            document.body.classList.remove('modal-open');
+        }
+    </script>
+
 </x-app-layout>

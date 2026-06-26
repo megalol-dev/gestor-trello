@@ -45,7 +45,12 @@ class TaskController extends Controller
             'board_id' => $request->board_id,
         ]);
 
-        return redirect()->back();
+        return redirect()
+            ->back()
+            ->with(
+                'scroll_position',
+                $request->scroll_position
+            );
     }
 
     public function moverAProgreso(Request $request, Task $task)

@@ -385,13 +385,15 @@ textarea {
 
 .dashboard-section-title {
 
+    margin-top: 30px;
+        margin-bottom: 30px;
+
     text-align: center;
 
     font-size: 2rem;
 
     font-weight: 700;
 
-    margin-bottom: 0px;
 }
 
 .dashboard-board-card {
@@ -496,8 +498,9 @@ textarea {
     display: flex;
     gap: 12px;
 
-    margin-top: -50px;
-    margin-bottom: 40px;
+    margin-top: -30px;
+    margin-bottom: 45px;
+        
 }
 
 .dashboard-link {
@@ -1108,15 +1111,23 @@ textarea {
 }
 
 .board-header-info {
-    width: 60%;
+    flex: 1;
 }
 
 .boards-actions {
-    width: 40%;
+    flex-shrink: 0;
+}
 
+.boards-actions {
     display: flex;
-    justify-content: flex-end;
-    gap: 15px;
+    gap: 18px;
+
+    margin-top: 30px;
+    margin-left: 0;
+
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .boards-title,
@@ -1126,6 +1137,7 @@ textarea {
 
 .boards-top-card {
     align-items: flex-start;
+    margin-top: 25px;
 }
 
 .task-card {
@@ -1156,43 +1168,505 @@ textarea {
     text-align: center;
 }
 
-/* ===================================================== */
-/* RESPONSIVE */
-/* ===================================================== */
 
-@media(max-width:900px) {
+/* =====================================================
+   RESPONSIVE GENERAL MOVIL
+===================================================== */
 
-    .tasks-columns {
+@media (max-width: 768px) {
 
+    body {
+        padding: 15px;
+    }
+
+    /* =====================
+       LOGIN / REGISTRO
+    ====================== */
+
+    .auth-card {
+        padding: 30px 25px;
+    }
+
+    .auth-title {
+        font-size: 2rem;
+    }
+
+    .login-actions {
+        flex-direction: column;
+        gap: 20px;
+        align-items: stretch;
+    }
+
+    .login-actions .btn,
+    .login-actions button {
+        width: 100%;
+    }
+
+    .remember-wrapper {
+        justify-content: center;
+    }
+
+    /* =====================
+       DASHBOARD
+    ====================== */
+
+    .dashboard-user-bar {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .dashboard-user-actions {
+        flex-direction: row;
+        justify-content: center;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .dashboard-user-actions .btn,
+    .dashboard-user-actions button {
+        width: 150px;
+        text-align: center;
+    }
+
+    .dashboard-actions {
+        flex-direction: column;
+        margin-top: -30px;
+        margin-bottom: 30px;
+    }
+
+    .dashboard-actions .btn {
+        width: 100%;
+    }
+
+    /* =====================
+       ESTADISTICAS
+    ====================== */
+
+    .stats-grid {
         grid-template-columns: 1fr;
     }
 
-    .boards-header {
+    /* =====================
+       TABLEROS
+    ====================== */
 
-        flex-direction: column;
-
+    .boards-top-card {
+        flex-direction: row;
+        justify-content: space-between;
         align-items: flex-start;
+        gap: 30px;
 
+        padding: 20px;
+    }
+    
+   .board-header-info {
+       flex: 1;
+   }
+
+   .boards-actions {
+       flex-shrink: 0;
+   }
+    
+    .boards-actions {
+        width: 40%;
+        display: flex;
+        justify-content: flex-end;
+        flex-wrap: nowrap;
         gap: 15px;
     }
-}
+
+    .boards-list,
+    .dashboard-boards-grid {
+        grid-template-columns: 1fr;
+    }
 
 
-/* Responsive */
 
-@media (max-width: 1000px) {
+    .board-page .boards-actions>form button {
+        width: 100%;
+    }
+
+    /* =====================
+       PERFIL
+    ====================== */
+
+    .profile-page {
+        padding: 20px;
+    }
 
     .profile-grid {
         grid-template-columns: 1fr;
     }
 
+    .profile-header-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    /* =====================
+       FORMULARIOS
+    ====================== */
+
+    .task-form-card form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .task-form-card button {
+        width: 100%;
+    }
+
+    /* =====================
+       MODALES
+    ====================== */
+
+    .board-modal-content {
+        width: 95%;
+        padding: 25px;
+    }
+
+    .board-modal-actions {
+        flex-direction: column;
+    }
+
+    .board-modal-actions .btn {
+        width: 100%;
+    }
+
+    /* =====================
+       TEXTOS
+    ====================== */
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Activar modo movil - ver tableros en horizontal*/
+.rotate-device-message {
+    display: block;
+}
+
+/* Oculto por defecto */
+.rotate-device-message {
+    display: none;
+}
+
+/* Solo móviles en vertical */
+@media (max-width: 768px) and (orientation: portrait) {
+
+    .rotate-device-message {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        min-height: 80vh;
+        text-align: center;
+        padding: 30px;
+        gap: 20px;
+    }
+
+    .board-page-content {
+        display: none;
+    }
 }
 
 
-@media(max-width:768px) {
-    .profile-header-card {
+/* =====================================================
+   TABLERO - MÓVIL HORIZONTAL
+===================================================== */
+@media (max-width: 950px) and (orientation: landscape) {
+
+    .boards-top-card {
+    margin-top: 25px;
+    align-items: flex-start;  
+    }
+
+    /* El texto ocupa casi todo */
+    .board-header-info {
+        flex: 1;
+    }
+    
+        .boards-actions {
+            flex-shrink: 0;
+        }
+
+    .boards-title,
+    .boards-subtitle {
+        max-width: none;
+        width: 100%;
+    }
+
+    /* Botones en una sola fila */
+    .boards-actions {
+        width: auto;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 12px;
+    }
+
+    /* Botones más pequeños */
+    .boards-actions .btn,
+    .boards-actions button {
+        padding: 8px 14px;
+        font-size: 0.9rem;
+        white-space: nowrap;
+    }
+
+    .boards-actions form {
+        width: auto;
+    }
+
+    .boards-actions form button {
+        width: auto;
+    }
+}
+
+@media (max-width: 950px) and (orientation: landscape) {
+
+    .board-header-info h1 {
+        font-size: 2.3rem;
+    }
+
+    .board-header-info p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 950px) and (orientation: landscape) {
+
+    .boards-actions {
+            display: flex;
+            gap: 18px;
+    
+            margin-top: 30px;
+            margin-left: 0;
+    
+            justify-content: flex-start;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+}
+
+
+@media (max-width:768px) and (orientation: landscape) {
+
+    .dashboard-page-content {
+        display: none;
+    }
+
+    .rotate-device-message {
+        display: flex;
+    }
+}
+
+@media (max-width:768px) and (orientation: portrait) {
+    .board-page-content {
+        display: none;
+    }
+
+    .rotate-device-message {
+        display: flex;
+    }
+}
+
+/* Dashboard */
+@media (max-width:768px) and (orientation: portrait) {
+
+    .dashboard-page-content {
+        display: block;
+    }
+}
+
+/* Tablero */
+@media (max-width:768px) and (orientation: landscape) {
+
+    .board-page-content {
+        display: block;
+    }
+}
+
+.rotate-device-message {
+    display: none;
+}
+
+/* =====================================================
+   ORIENTACIÓN MÓVIL
+===================================================== */
+
+/* Por defecto: los avisos de rotación están ocultos */
+.rotate-device-message {
+    display: none;
+}
+
+/* =====================================================
+   DASHBOARD / PÁGINAS GENERALES
+   En móvil horizontal: pedir volver a vertical
+===================================================== */
+
+/* =====================================================
+   DASHBOARD / PÁGINAS GENERALES
+===================================================== */
+
+@media (max-width: 950px) and (orientation: landscape) {
+
+    .dashboard-page-content {
+        display: none;
+    }
+
+    .dashboard-container>.rotate-device-message {
+        display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+        text-align: center;
+        padding: 30px;
         gap: 20px;
     }
+}
+
+/* =====================================================
+   TABLERO KANBAN
+   En móvil vertical: pedir girar a horizontal
+===================================================== */
+
+@media (max-width: 768px) and (orientation: portrait) {
+
+    .board-page-content {
+        display: none;
+    }
+
+    .board-page>.rotate-device-message {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        min-height: 80vh;
+        text-align: center;
+        padding: 30px;
+        gap: 20px;
+    }
+}
+
+/* =====================================================
+   TABLERO KANBAN
+   En móvil horizontal: ajustes visuales del tablero
+===================================================== */
+
+@media (max-width: 950px) and (orientation: landscape) {
+
+    .board-page-content {
+        display: block;
+    }
+
+    .board-header-info h1,
+    .board-header-info h2 {
+        font-size: 2.3rem;
+    }
+
+    .board-header-info p {
+        font-size: 1.2rem;
+    }
+
+    .boards-actions {
+        display: flex;
+        gap: 18px;
+
+        margin-top: 30px;
+        margin-left: 0;
+
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+}
+
+
+/* =====================================================
+   MODALES EN MÓVIL
+===================================================== */
+
+/* =====================================================
+   MODALES EN MÓVIL
+===================================================== */
+
+@media (max-width: 950px) {
+
+    .board-modal {
+        padding: 15px;
+    }
+
+    .board-modal-content {
+        width: 100%;
+        max-width: 650px;
+
+        max-height: 90vh;
+        overflow-y: auto;
+
+        padding: 20px;
+    }
+
+    .board-modal-content h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    .board-modal-content input,
+    .board-modal-content textarea {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .board-modal-content textarea {
+        min-height: 120px;
+    }
+
+    .board-modal-actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .board-modal-actions .btn,
+    .board-modal-actions button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 950px) and (orientation: landscape) {
+
+    .board-modal-content {
+        max-height: 80vh;
+        padding: 15px;
+    }
+
+    .board-modal-content textarea {
+        min-height: 90px;
+    }
+}
+
+/*bloqueaores de los modales*/
+body.modal-open {
+    overflow: hidden;
+}
+
+.board-modal {
+    pointer-events: all;
+}
+
+.board-modal-content {
+    pointer-events: all;
 }
