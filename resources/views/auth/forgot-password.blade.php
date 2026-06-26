@@ -23,13 +23,15 @@
                 Introduce tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.
             </p>
 
-            @if(session('status'))
-            <div class="auth-message">
-                {{ session('status') }}
+            @if (session('status'))
+
+            <div class="success-message">
+                ✅ Se ha enviado un enlace de recuperación a tu correo electrónico.
             </div>
+
             @endif
 
-            <form method="POST" action="{{ route('password.email') }}">
+            <form method="POST" action="{{ route('password.email') }}" novalidate>
 
                 @csrf
 
@@ -48,7 +50,21 @@
                         autofocus>
 
                     @error('email')
-                    <p class="error-message">{{ $message }}</p>
+
+                    <div class="login-error">
+
+                        @if($message === __('passwords.user'))
+                        No existe ninguna cuenta registrada con ese correo electrónico.
+
+                        @elseif(str_contains($message, 'valid email'))
+                        Introduce un correo electrónico válido.
+
+                        @else
+                        {{ $message }}
+                        @endif
+
+                    </div>
+
                     @enderror
 
                 </div>

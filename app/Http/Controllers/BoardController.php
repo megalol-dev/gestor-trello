@@ -7,13 +7,6 @@ use Illuminate\Http\Request;
 
 class BoardController extends Controller
 {
-    public function index(Request $request)
-    {
-        $boards = $request->user()->boards;
-
-        return view('boards.index', compact('boards'));
-    }
-
     public function show(Request $request, Board $board)
     {
         if ($board->user_id !== $request->user()->id) {
@@ -40,11 +33,7 @@ class BoardController extends Controller
         ));
     }
 
-    public function create()
-    {
-        return view('boards.create');
-    }
-
+   
     public function store(Request $request)
     {
         $request->validate([
@@ -57,7 +46,7 @@ class BoardController extends Controller
             'descripcion' => $request->descripcion,
         ]);
 
-        return redirect()->route('boards.index');
+        return redirect()->route('dashboard');
     }
 
     public function edit(Request $request, Board $board)
@@ -96,6 +85,6 @@ class BoardController extends Controller
 
         $board->delete();
 
-        return redirect()->route('boards.index');
+        return redirect()->route('dashboard');
     }
 }

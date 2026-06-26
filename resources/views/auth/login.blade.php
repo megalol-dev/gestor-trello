@@ -8,7 +8,7 @@
 
     @vite([
     'resources/css/app.css',
-    'resources/js/login-validation.js'
+    'resources/js/app.js'
     ])
 </head>
 
@@ -29,12 +29,12 @@
             </p>
 
             @if(session('status'))
-            <div class="auth-message">
+            <div class="login-success">
                 {{ session('status') }}
             </div>
             @endif
 
-            @if ($errors->has('email'))
+            @if($errors->has('email'))
             <div class="login-error">
                 Correo o contraseña incorrectos.
             </div>
@@ -51,7 +51,7 @@
                     </label>
 
                     <input
-                        type="email"
+                        type="text"
                         id="email"
                         name="email"
                         value="{{ old('email') }}"

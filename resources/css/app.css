@@ -171,18 +171,22 @@ textarea {
     display: flex;
     flex-direction: column;
     gap: 25px;
+    
 }
 
 .dashboard-title {
     text-align: center;
     margin-bottom: 5px;
+    
 }
+
 
 .stats-grid {
     display: grid;
     grid-template-columns:
         repeat(auto-fit, minmax(180px, 1fr));
     gap: 20px;
+    
 }
 
 .stat-card {
@@ -222,19 +226,21 @@ textarea {
 
     display: grid;
 
-    grid-template-columns:
-        repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
 
-    gap: 20px;
+    gap: 25px;
 }
 
 .board-card {
-
+    background: white;
+    border: 1px solid var(--color-primary);
+    border-radius: 16px;
+    padding: 24px;
     display: flex;
-
     flex-direction: column;
-
-    gap: 15px;
+    min-height: 220px;
+    height: 100%;
+    transition: .3s;
 }
 
 .board-name {
@@ -268,6 +274,8 @@ textarea {
 .board-header {
 
     background: white;
+
+    border: 1px solid var(--color-border);
 
     border-radius: var(--radius);
 
@@ -377,7 +385,13 @@ textarea {
 
 .dashboard-section-title {
 
-    margin-bottom: 20px;
+    text-align: center;
+
+    font-size: 2rem;
+
+    font-weight: 700;
+
+    margin-bottom: 0px;
 }
 
 .dashboard-board-card {
@@ -420,6 +434,7 @@ textarea {
 .board-open-button:hover {
     background: var(--color-primary-hover);
     transform: translateY(-2px);
+    text-decoration: none;
 }
 
 .dashboard-board-description {
@@ -449,6 +464,7 @@ textarea {
 ========================= */
 
 .dashboard-user-bar {
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -457,8 +473,12 @@ textarea {
     padding: 15px 20px;
 
     background: white;
+
+    border: 1px solid var(--color-border);
+
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+
+    box-shadow: var(--shadow-card);
 }
 
 .dashboard-user-info {
@@ -504,13 +524,16 @@ textarea {
 ========================= */
 
 .dashboard-summary {
+
     background: white;
+
+    border: 1px solid var(--color-border);
 
     padding: 30px;
 
     border-radius: 16px;
 
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+    box-shadow: var(--shadow-card);
 
     margin-bottom: 40px;
 }
@@ -809,6 +832,7 @@ textarea {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
+    border: 1px solid var(--color-primary);
 }
 
 .boards-subtitle {
@@ -892,10 +916,25 @@ textarea {
 }
 
 .task-column {
-    background: white;
-    border-radius: 16px;
-    padding: 25px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
+
+    background: #ffffff;
+
+    border: 1px solid var(--color-border);
+
+    padding: 15px;
+
+    border-radius: var(--radius);
+
+    min-height: 300px;
+
+    transition: .2s;
+}
+
+.task-column.drag-over {
+
+    border: 2px dashed var(--color-primary);
+
+    background: #f3f8ff;
 }
 
 .column-title {
@@ -1103,6 +1142,19 @@ textarea {
     border: 2px dashed #2563eb;
 }
 
+.success-message {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 8px;
+
+    background: #d4edda;
+    color: #155724;
+
+    border: 1px solid #28a745;
+
+    font-weight: bold;
+    text-align: center;
+}
 
 /* ===================================================== */
 /* RESPONSIVE */

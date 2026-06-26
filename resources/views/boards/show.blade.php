@@ -25,16 +25,29 @@
                     Editar tablero
                 </button>
 
-                <a href="{{ route('boards.index') }}" class="btn btn-primary">
+                <a href="{{ route('dashboard') }}" class="btn btn-primary">
                     Volver
                 </a>
 
-                <form method="POST" action="{{ route('logout') }}" style="display:inline;">
-                    @csrf
+                <form
+                    id="delete-board-form"
+                    method="POST"
+                    action="{{ route('boards.destroy', $board) }}">
 
-                    <button type="submit" class="btn btn-danger">
-                        Cerrar sesión
+                    @csrf
+                    @method('DELETE')
+
+                    <button
+                        type="button"
+                        class="btn btn-danger"
+                        onclick="openDeleteModal(
+                            'delete-board-form',
+                            '¿Seguro que quieres eliminar este tablero?<br><br><strong>También se eliminarán todas sus tareas.</strong>'
+                        )">
+                        Eliminar tablero
+
                     </button>
+
                 </form>
 
             </div>
@@ -167,6 +180,45 @@
 
         </div>
 
+        <!-- MODAL CONFIRMAR ELIMINACIÓN -->
+
+        <div id="deleteModal" class="board-modal">
+
+            <div class="board-modal-content">
+
+                <h2 id="deleteTitle">
+                    Confirmar eliminación
+                </h2>
+
+                <p id="deleteMessage">
+                </p>
+
+                <div class="board-modal-actions">
+
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        onclick="closeDeleteModal()">
+
+                        Cancelar
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn btn-danger"
+                        onclick="submitDeleteForm()">
+
+                        Eliminar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
         <!-- NUEVA TAREA -->
 
         <section class="profile-card task-form-card">
@@ -246,13 +298,22 @@
                         </button>
 
                         <form
+                            id="delete-task-{{ $task->id }}"
                             action="{{ route('tasks.destroy', $task) }}"
                             method="POST">
+
                             @csrf
                             @method('DELETE')
 
-                            <button type="submit">
+                            <button
+                                type="button"
+                                class="btn btn-danger"
+                                onclick="openDeleteModal(
+                                    'delete-task-{{ $task->id }}',
+                                    '¿Seguro que quieres eliminar esta tarea?'
+                                )">
                                 Eliminar
+
                             </button>
 
                         </form>
@@ -319,13 +380,22 @@
                         </button>
 
                         <form
+                            id="delete-task-{{ $task->id }}"
                             action="{{ route('tasks.destroy', $task) }}"
                             method="POST">
+
                             @csrf
                             @method('DELETE')
 
-                            <button type="submit">
+                            <button
+                                type="button"
+                                class="btn btn-danger"
+                                onclick="openDeleteModal(
+                                    'delete-task-{{ $task->id }}',
+                                    '¿Seguro que quieres eliminar esta tarea?'
+                                )">
                                 Eliminar
+
                             </button>
 
                         </form>
@@ -391,13 +461,23 @@
                         </button>
 
                         <form
+                            id="delete-task-{{ $task->id }}"
                             action="{{ route('tasks.destroy', $task) }}"
                             method="POST">
+
                             @csrf
                             @method('DELETE')
 
-                            <button type="submit">
+                            <button
+                                type="button"
+                                class="btn btn-danger"
+                                onclick="openDeleteModal(
+                                    'delete-task-{{ $task->id }}',
+                                    '¿Seguro que quieres eliminar esta tarea?'
+                                )"
+                            >
                                 Eliminar
+
                             </button>
 
                         </form>
@@ -486,6 +566,34 @@
         }
     </script>
 
-    @vite('resources/js/drag-drop.js')
+    <script>
+        let deleteForm = null;
+
+        function openDeleteModal(formId, mensaje) {
+
+            deleteForm = document.getElementById(formId);
+
+            document.getElementById("deleteMessage").innerHTML = mensaje;
+
+            document.getElementById("deleteModal").style.display = "flex";
+        }
+
+        function closeDeleteModal() {
+
+            document.getElementById("deleteModal").style.display = "none";
+
+            deleteForm = null;
+        }
+
+        function submitDeleteForm() {
+
+            if (deleteForm) {
+
+                deleteForm.submit();
+
+            }
+
+        }
+    </script>
 
 </x-app-layout>

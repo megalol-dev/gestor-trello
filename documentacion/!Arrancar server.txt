@@ -1,4 +1,10 @@
 // arranca xaamp para la base datos
 
-// en la consola escribe -> 
+// en una consola escribe -> 
+npm run dev
+
+// en otra consola escribe -> 
 php artisan serve
+
+// URL 
+http://127.0.0.1:8000/login
