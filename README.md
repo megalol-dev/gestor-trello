@@ -1,58 +1,265 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📋 GestorTrello
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplicación web inspirada en Trello desarrollada con **Laravel 12**, que permite gestionar proyectos mediante tableros y tareas organizadas por estados.
 
-## About Laravel
+El objetivo de este proyecto ha sido desarrollar una aplicación de gestión de tareas inspirada en Trello, aplicando conceptos de desarrollo full-stack con Laravel, autenticación de usuarios, recuperación de cuentas, gestión de tareas mediante estados, sistema Drag & Drop y persistencia de datos.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🚀 Características principales
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* ✅ Registro e inicio de sesión de usuarios.
+* ✅ Recuperación de contraseña mediante correo electrónico (SMTP Gmail).
+* ✅ Sistema "Recordarme".
+* ✅ CRUD completo de tableros.
+* ✅ CRUD completo de tareas.
+* ✅ Gestión de tareas por estados: Pendiente, En progreso y Hecha.
+* ✅ Sistema Drag & Drop.
+* ✅ Persistencia automática de cambios.
+* ✅ Dashboard con estadísticas.
+* ✅ Porcentaje de progreso de cada tablero.
+* ✅ Confirmaciones personalizadas para eliminar tareas y tableros.
+* ✅ Validaciones y mensajes en español.
+* ✅ Diseño responsive.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+# 🖼️ Capturas de pantalla
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Pantalla de inicio de sesión
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+> 🔐 Pantalla de inicio de sesión de la aplicación. El usuario puede autenticarse con su correo y contraseña, mantener la sesión iniciada o recuperar el acceso a su cuenta mediante el sistema de recuperación por correo electrónico.
 
-## Agentic Development
+![Login](docs/img/login.png)
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+---
 
-```bash
-composer require laravel/boost --dev
+## Registro de usuario
 
-php artisan boost:install
+> 👤 Pantalla de registro de nuevos usuarios. Permite crear una cuenta en la aplicación mediante un formulario con validaciones de datos y almacenamiento seguro de las credenciales.
+
+![Registro](docs/img/registro.png)
+
+---
+
+
+## Recuperación de contraseña
+
+> 🔑 Sistema de recuperación de contraseña mediante correo electrónico. El usuario introduce su dirección de correo y recibe un enlace seguro para restablecer su contraseña y recuperar el acceso a su cuenta.
+
+![Recuperar contraseña](docs/img/recuperar_pass.png)
+![Reset Password](docs/img/recuperar_pass_2.png)
+
+---
+
+
+## Dashboard principal
+
+> 📊 Panel principal de la aplicación que muestra un resumen de la actividad del usuario, incluyendo estadísticas de tableros, tareas y porcentaje global de progreso.
+
+![Dashboard](docs/img/panel_principal.png)
+![Dashboard_2](docs/img/panel_principal_2.png)
+
+---
+
+## Dashboard - Perfil usuario
+
+> ⚙️ Sección de perfil personal que permite al usuario actualizar su nombre y cambiar su contraseña de forma segura desde la propia aplicación.
+
+![Perfil_usuario](docs/img/perfil.png)
+
+---
+
+
+## Vista de un tablero
+
+> 📋 Vista principal de un tablero. Permite organizar tareas por estados, consultar su progreso y acceder a las opciones de edición y eliminación.
+
+![Tablero](docs/img/tablero.png)
+![Tablero_2](docs/img/tablero_2.png)
+
+---
+
+## Sistema Drag & Drop
+
+> 🔄 Sistema de arrastrar y soltar que permite mover tareas entre columnas de forma intuitiva, actualizando automáticamente su estado en la base de datos.
+
+![Tablero_2](docs/img/tarjetas_trello.png)
+
+---
+
+# ⚙️ Tecnologías utilizadas
+
+* PHP 8.5
+* Laravel 12
+* Blade
+* Eloquent ORM
+* MySQL
+* HTML5
+* CSS3
+* JavaScript
+* Vite
+* SMTP Gmail
+
+---
+
+# 🗂️ Estructura del proyecto
+
+```text
+app/
+├── Http/
+│   ├── Controllers/
+│   └── Requests/
+
+resources/
+├── views/
+├── css/
+└── js/
+
+routes/
+database/
+public/
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+---
 
-## Contributing
+# 🔐 Funcionalidades implementadas
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Gestión de usuarios
 
-## Code of Conduct
+* Registro.
+* Inicio de sesión.
+* Cierre de sesión.
+* Recuperación de contraseña.
+* Restablecimiento mediante correo.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Gestión de tableros
 
-## Security Vulnerabilities
+* Crear tablero.
+* Editar tablero.
+* Eliminar tablero.
+* Ver estadísticas.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Gestión de tareas
 
-## License
+* Crear tarea.
+* Editar tarea.
+* Eliminar tarea.
+* Mover tareas entre estados.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+# 📊 Dashboard
+
+El panel principal muestra:
+
+* Número de tableros.
+* Número total de tareas.
+* Tareas pendientes.
+* Tareas en progreso.
+* Tareas completadas.
+* Porcentaje global de finalización.
+
+---
+
+# 📦 Instalación
+
+Clonar el proyecto:
+
+```bash
+git clone https://github.com/megalol-dev/gestor-trello.git
+```
+
+Entrar al proyecto:
+
+```bash
+cd gestor-trello
+```
+
+Instalar dependencias:
+
+```bash
+composer install
+npm install
+```
+
+Copiar el archivo de entorno:
+
+```bash
+cp .env.example .env
+```
+
+Generar la clave:
+
+```bash
+php artisan key:generate
+```
+
+Configurar la base de datos en:
+
+```env
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=
+```
+
+Ejecutar migraciones:
+
+Crear la base de datos y ejecutar las migraciones:
+
+```bash
+php artisan migrate
+```
+
+Opcionalmente, si quieres datos de prueba:
+
+```bash
+php artisan db:seed
+```
+
+Iniciar el servidor:
+
+```bash
+php artisan serve
+npm run dev
+```
+
+---
+
+# 🛠️ Aspectos técnicos destacados
+
+- Arquitectura MVC mediante Laravel.
+- Uso de Eloquent ORM y relaciones entre modelos.
+- Sistema de autenticación completo.
+- Recuperación de contraseña mediante SMTP Gmail.
+- Validaciones personalizadas.
+- Componentes Blade reutilizables.
+- Persistencia de estados mediante AJAX y JavaScript.
+- Diseño responsive.
+
+---
+
+# 🚀 Estado del proyecto
+
+✅ Proyecto finalizado y completamente funcional.
+
+Posibles mejoras futuras:
+
+- Compartir tableros entre usuarios.
+- Etiquetas y prioridades en tareas.
+- Sistema de comentarios.
+- Despliegue online.
+
+# 👨‍💻 Autor
+
+**José Luis Escudero Polo**
+
+* GitHub: https://github.com/megalol-dev
+* Portfolio: *(añadir enlace cuando lo tengas - luego lo añado chat tranqui)*
+
+---
+
+# 📄 Licencia
+
+Este proyecto ha sido desarrollado con fines educativos y como proyecto de portfolio personal. El código puede utilizarse como referencia de aprendizaje, respetando la autoría original.
+
