@@ -88,6 +88,30 @@ El objetivo de este proyecto ha sido desarrollar una aplicación de gestión de 
 
 ---
 
+## 📱 Soporte para dispositivos móviles
+
+La aplicación fue diseñada inicialmente para ser utilizada en **ordenadores de escritorio**, ya que la gestión de tareas mediante un tablero Kanban con varias columnas y tarjetas arrastrables ofrece una mejor experiencia en pantallas amplias.
+
+No obstante, en la versión **2.0** se ha añadido un sistema **responsive** para permitir que los usuarios puedan consultar y gestionar sus proyectos desde dispositivos móviles cuando sea necesario.
+
+Las principales adaptaciones realizadas son:
+
+* Diseño responsive para las pantallas de autenticación, panel de control y gestión de tableros.
+* Interfaces adaptadas para mejorar la navegación en pantallas pequeñas.
+* Detección de la orientación del dispositivo para ofrecer la mejor experiencia de uso según la sección de la aplicación.
+* Ajustes específicos para la visualización de los tableros Kanban en dispositivos móviles.
+
+Además, se ha garantizado el correcto funcionamiento del sistema de **drag & drop** de las tarjetas, permitiendo mover tareas entre columnas tanto en escritorio como en dispositivos móviles compatibles.
+
+> **Nota:** Aunque la aplicación puede utilizarse desde un teléfono móvil, la experiencia de usuario recomendada sigue siendo la versión de escritorio, especialmente para la gestión intensiva de tareas y el trabajo con múltiples columnas del tablero Kanban.
+
+![Responsive](docs/img/responsive.png)
+![Responsive2](docs/img/responsive_2.png)
+![Responsive3](docs/img/responsive_3.png)
+
+---
+
+
 # ⚙️ Tecnologías utilizadas
 
 * PHP 8.5
