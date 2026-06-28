@@ -105,7 +105,10 @@ Además, se ha garantizado el correcto funcionamiento del sistema de **drag & dr
 
 > **Nota:** Aunque la aplicación puede utilizarse desde un teléfono móvil, la experiencia de usuario recomendada sigue siendo la versión de escritorio, especialmente para la gestión intensiva de tareas y el trabajo con múltiples columnas del tablero Kanban.
 
+Version responsive vertical
 ![Responsive](docs/img/responsive.png)
+
+Versión responsive horizontal para las tarjetas drag & drop
 ![Responsive2](docs/img/responsive_2.png)
 ![Responsive3](docs/img/responsive_3.png)
 
